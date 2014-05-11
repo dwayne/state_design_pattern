@@ -5,7 +5,7 @@
 require 'state_pattern'
 
 class CaseChanger < StatePattern::StateMachine
-  def start_state_class
+  def start_state
     Lowercase
   end
 end

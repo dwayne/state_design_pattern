@@ -18,7 +18,7 @@ module StatePattern
     end
 
     def transition_to_start_state
-      transition_to_state(start_state_class)
+      transition_to_state(start_state)
     end
 
     def transition_to_state(state_class)
@@ -59,7 +59,7 @@ module StatePattern
     def initial_context
     end
 
-    def start_state_class
+    def start_state
       raise NotImplementedError
     end
   end
