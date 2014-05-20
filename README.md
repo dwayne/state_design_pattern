@@ -1,5 +1,6 @@
 # state_design_pattern
 
+[![Gem Version](https://badge.fury.io/rb/state_design_pattern.svg)](http://badge.fury.io/rb/state_design_pattern)
 [![Build Status](https://travis-ci.org/dwayne/state_design_pattern.svg?branch=master)](https://travis-ci.org/dwayne/state_design_pattern)
 [![Coverage Status](https://coveralls.io/repos/dwayne/state_design_pattern/badge.png?branch=master)](https://coveralls.io/r/dwayne/state_design_pattern?branch=master)
 [![Code Climate](https://codeclimate.com/github/dwayne/state_design_pattern.png)](https://codeclimate.com/github/dwayne/state_design_pattern)
