@@ -2,15 +2,15 @@
 #
 # See http://sourcemaking.com/design_patterns/state/java/1
 
-require 'state_pattern'
+require 'state_design_pattern'
 
-class CeilingFanPullChain < StatePattern::StateMachine
+class CeilingFanPullChain < StateDesignPattern::StateMachine
   def start_state
     Off
   end
 end
 
-class CeilingFanState < StatePattern::BaseState
+class CeilingFanState < StateDesignPattern::BaseState
   def_actions :pull
 end
 

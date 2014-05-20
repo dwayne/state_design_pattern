@@ -1,3 +1,0 @@
-module StatePattern
-  VERSION = '0.0.1'
-end

@@ -1,4 +1,4 @@
-module StatePattern
+module StateDesignPattern
 
   class BaseState
 

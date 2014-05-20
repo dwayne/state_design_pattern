@@ -2,15 +2,15 @@
 #
 # See http://en.wikipedia.org/wiki/State_pattern#Java
 
-require 'state_pattern'
+require 'state_design_pattern'
 
-class CaseChanger < StatePattern::StateMachine
+class CaseChanger < StateDesignPattern::StateMachine
   def start_state
     Lowercase
   end
 end
 
-class CaseChangerState < StatePattern::BaseState
+class CaseChangerState < StateDesignPattern::BaseState
   def_actions :write
 end
 

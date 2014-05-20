@@ -2,9 +2,9 @@
 #
 # See http://en.wikipedia.org/wiki/State_pattern#Pseudocode
 
-require 'state_pattern'
+require 'state_design_pattern'
 
-class Cursor < StatePattern::StateMachine
+class Cursor < StateDesignPattern::StateMachine
   def start_state
     PenTool
   end
@@ -18,7 +18,7 @@ class Cursor < StatePattern::StateMachine
   end
 end
 
-class AbstractTool < StatePattern::BaseState
+class AbstractTool < StateDesignPattern::BaseState
   def_actions :move_to, :mouse_down, :mouse_up
 end
 

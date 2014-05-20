@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    state_pattern (0.0.0)
+    state_design_pattern (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -36,4 +36,4 @@ DEPENDENCIES
   coveralls (~> 0.7)
   minitest (~> 5.3)
   rake (~> 10.3)
-  state_pattern!
+  state_design_pattern!

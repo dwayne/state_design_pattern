@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'state_pattern/version'
+require 'state_design_pattern/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'state_pattern'
-  spec.version       = StatePattern::VERSION
+  spec.name          = 'state_design_pattern'
+  spec.version       = StateDesignPattern::VERSION
   spec.author        = 'Dwayne R. Crooks'
   spec.email         = ['me@dwaynecrooks.com']
   spec.summary       = %q{An implementation of the State Design Pattern in Ruby.}
   spec.description   = %q{An implementation of the State Design Pattern in Ruby. The State Design Pattern allows an object to alter its behavior when its
   internal state changes.}
-  spec.homepage      = 'https://github.com/dwayne/state_pattern'
+  spec.homepage      = 'https://github.com/dwayne/state_design_pattern'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")

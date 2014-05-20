@@ -2,15 +2,15 @@
 #
 # See http://sourcemaking.com/design_patterns/state/java/6
 
-require 'state_pattern'
+require 'state_design_pattern'
 
-class FSM < StatePattern::StateMachine
+class FSM < StateDesignPattern::StateMachine
   def start_state
     A
   end
 end
 
-class FSMState < StatePattern::BaseState
+class FSMState < StateDesignPattern::BaseState
   def_actions :on, :off, :ack
 end
 
@@ -58,7 +58,7 @@ def main
       fsm.on  if msg == 0
       fsm.off if msg == 1
       fsm.ack if msg == 2
-    rescue StatePattern::IllegalStateException
+    rescue StateDesignPattern::IllegalStateException
       puts "error"
     end
   end

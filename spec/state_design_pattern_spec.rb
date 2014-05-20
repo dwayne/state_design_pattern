@@ -4,7 +4,7 @@ describe "the operation of the state design pattern with an example" do
 
   TIMESTAMP = Time.now
 
-  class LightBulb < StatePattern::StateMachine
+  class LightBulb < StateDesignPattern::StateMachine
     def start_state
       Off
     end
@@ -16,7 +16,7 @@ describe "the operation of the state design pattern with an example" do
     end
   end
 
-  class Switch < StatePattern::BaseState
+  class Switch < StateDesignPattern::BaseState
     def_actions :turn_on, :turn_off, :toggle
   end
 
@@ -175,7 +175,7 @@ describe "the operation of the state design pattern with an example" do
         describe "#toggle" do
 
           it "doesn't work" do
-            proc { light_bulb.toggle }.must_raise StatePattern::IllegalStateException
+            proc { light_bulb.toggle }.must_raise StateDesignPattern::IllegalStateException
           end
         end
       end
@@ -251,7 +251,7 @@ describe "the operation of the state design pattern with an example" do
         describe "#toggle" do
 
           it "doesn't work" do
-            proc { light_bulb.toggle }.must_raise StatePattern::IllegalStateException
+            proc { light_bulb.toggle }.must_raise StateDesignPattern::IllegalStateException
           end
         end
       end

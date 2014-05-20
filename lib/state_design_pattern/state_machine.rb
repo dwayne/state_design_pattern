@@ -1,7 +1,7 @@
 require 'forwardable'
 require 'observer'
 
-module StatePattern
+module StateDesignPattern
 
   class StateMachine
     extend Forwardable

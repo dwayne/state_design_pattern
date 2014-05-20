@@ -16,7 +16,7 @@ It can be turned on and off. Every time it is turned on it uses 25% of its
 energy. When it runs out of energy it cannot be turned on again.
 
 ```ruby
-class LightBulb < StatePattern::StateMachine
+class LightBulb < StateDesignPattern::StateMachine
   def start_state
     Off
   end
@@ -28,7 +28,7 @@ class LightBulb < StatePattern::StateMachine
   end
 end
 
-class Switch < StatePattern::BaseState
+class Switch < StateDesignPattern::BaseState
   def_actions :turn_on, :turn_off
 end
 
