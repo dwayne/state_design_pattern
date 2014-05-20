@@ -2,6 +2,114 @@
 
 An implementation of the
 [State Design Pattern](http://sourcemaking.com/design_patterns/state) in Ruby.
+The State Design Pattern allows an object to alter its behavior when its
+internal state changes.
+
+## Example
+
+Here's an example of the state design pattern in use. A light bulb is modeled.
+It can be turned on and off. Every time it is turned on it uses 25% of its
+energy. When it runs out of energy it cannot be turned on again.
+
+```ruby
+class LightBulb < StatePattern::StateMachine
+  def start_state
+    Off
+  end
+
+  def initial_context
+    Struct
+      .new(:energy, :times_on, :times_off)
+      .new(100,     0,         0)
+  end
+end
+
+class Switch < StatePattern::BaseState
+  def_actions :turn_on, :turn_off
+end
+
+class On < Switch
+
+  def turn_on
+    state_machine.send_event(:already_turned_on)
+  end
+
+  def turn_off
+    state_machine.times_off += 1
+    state_machine.transition_to_state_and_send_event(Off, :turned_off)
+  end
+end
+
+class Off < Switch
+
+  def turn_on
+    if state_machine.energy >= 25
+      state_machine.energy -= 25
+      state_machine.times_on += 1
+      state_machine.transition_to_state_and_send_event(On, :turned_on)
+    else
+      state_machine.send_event(:out_of_energy)
+    end
+  end
+
+  def turn_off
+    state_machine.send_event(:already_turned_off)
+  end
+end
+
+class LightBulbObserver
+
+  def initialize
+    @events = []
+  end
+
+  def last_event
+    @events.last
+  end
+
+  def update(event)
+    @events << event
+  end
+end
+
+light_bulb = LightBulb.new
+light_bulb_observer = LightBulbObserver.new
+
+light_bulb.add_observer(light_bulb_observer)
+
+light_bulb.current_state #=> Off
+
+light_bulb.energy        #=> 100
+light_bulb.times_on      #=> 0
+light_bulb.times_off     #=> 0
+
+light_bulb.turn_on
+light_bulb_observer.last_event[:name] #=> :turned_on
+
+light_bulb.current_state #=> On
+
+light_bulb.energy        #=> 75
+light_bulb.times_on      #=> 1
+light_bulb.times_off     #=> 0
+
+light_bulb.turn_off
+light_bulb.turn_on
+
+light_bulb.turn_off
+light_bulb.turn_on
+
+light_bulb.turn_off
+light_bulb.turn_on
+
+light_bulb.energy        #=> 0
+light_bulb.times_on      #=> 4
+light_bulb.times_off     #=> 3
+
+light_bulb.turn_off
+light_bulb.turn_on
+
+light_bulb_observer.last_event[:name] #=> :out_of_energy
+```
 
 ## Testing
 
