@@ -20,6 +20,10 @@ module StatePattern
       raise NotImplementedError
     end
 
+    def current_state
+      @state.class
+    end
+
     def transition_to_state_and_send_event(state_class, name, message = {})
       transition_to_state(state_class)
       send_event(name, message)
@@ -61,8 +65,10 @@ module StatePattern
       end
 
       def setup_action_delegation
-        methods = @state.actions
-        self.class.def_delegators :@state, *methods
+        if @state.respond_to?(:actions)
+          methods = @state.actions
+          self.class.def_delegators :@state, *methods
+        end
       end
   end
 end
