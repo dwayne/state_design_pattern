@@ -9,7 +9,8 @@ Gem::Specification.new do |spec|
   spec.author        = 'Dwayne R. Crooks'
   spec.email         = ['me@dwaynecrooks.com']
   spec.summary       = %q{An implementation of the State Design Pattern in Ruby.}
-  spec.description   = %q{An implementation of the State Design Pattern in Ruby.}
+  spec.description   = %q{An implementation of the State Design Pattern in Ruby. The State Design Pattern allows an object to alter its behavior when its
+  internal state changes.}
   spec.homepage      = 'https://github.com/dwayne/state_pattern'
   spec.license       = 'MIT'
 
