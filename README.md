@@ -1,8 +1,8 @@
-# state_pattern
+# state_design_pattern
 
-[![Build Status](https://travis-ci.org/dwayne/state_pattern.svg?branch=master)](https://travis-ci.org/dwayne/state_pattern)
-[![Coverage Status](https://coveralls.io/repos/dwayne/state_pattern/badge.png)](https://coveralls.io/r/dwayne/state_pattern)
-[![Code Climate](https://codeclimate.com/github/dwayne/state_pattern.png)](https://codeclimate.com/github/dwayne/state_pattern)
+[![Build Status](https://travis-ci.org/dwayne/state_design_pattern.svg?branch=master)](https://travis-ci.org/dwayne/state_design_pattern)
+[![Coverage Status](https://coveralls.io/repos/dwayne/state_design_pattern/badge.png)](https://coveralls.io/r/dwayne/state_design_pattern)
+[![Code Climate](https://codeclimate.com/github/dwayne/state_design_pattern.png)](https://codeclimate.com/github/dwayne/state_design_pattern)
 
 An implementation of the
 [State Design Pattern](http://sourcemaking.com/design_patterns/state) in Ruby.
@@ -128,13 +128,13 @@ If you'd like to contribute a feature or bugfix: Thanks! To make sure your
 fix/feature has a high chance of being included, please read the following
 guidelines:
 
-1. Post a [pull request](https://github.com/dwayne/state_pattern/compare/).
+1. Post a [pull request](https://github.com/dwayne/state_design_pattern/compare/).
 2. Make sure there are tests! I will not accept any patch that is not tested.
 It's a rare time when explicit tests aren't needed. If you have questions about
 writing tests for state_pattern, please open a
-[GitHub issue](https://github.com/dwayne/state_pattern/issues/new).
+[GitHub issue](https://github.com/dwayne/state_design_pattern/issues/new).
 
 ## License
 
-state_pattern is Copyright © 2014 Dwayne R. Crooks. It is free software, and may
-be redistributed under the terms specified in the MIT-LICENSE file.
+state_design_pattern is Copyright © 2014 Dwayne R. Crooks. It is free software,
+and may be redistributed under the terms specified in the MIT-LICENSE file.
