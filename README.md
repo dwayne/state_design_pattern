@@ -1,6 +1,7 @@
 # state_pattern
 
 [![Build Status](https://travis-ci.org/dwayne/state_pattern.svg?branch=master)](https://travis-ci.org/dwayne/state_pattern)
+[![Coverage Status](https://coveralls.io/repos/dwayne/state_pattern/badge.png)](https://coveralls.io/r/dwayne/state_pattern)
 
 An implementation of the
 [State Design Pattern](http://sourcemaking.com/design_patterns/state) in Ruby.
