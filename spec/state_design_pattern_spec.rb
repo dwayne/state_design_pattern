@@ -10,9 +10,11 @@ describe "the operation of the state design pattern with an example" do
     end
 
     def initial_context
-      Struct
-        .new(:energy, :times_on, :times_off)
-        .new(100,     0,         0)
+      Struct.new(:energy, :times_on, :times_off) do
+        def blown?
+          energy < 25
+        end
+      end.new(100, 0, 0)
     end
   end
 
@@ -35,7 +37,7 @@ describe "the operation of the state design pattern with an example" do
   class Off < Switch
 
     def turn_on
-      if state_machine.energy >= 25
+      if !state_machine.context.blown?
         state_machine.energy -= 25
         state_machine.times_on += 1
         state_machine.transition_to_state_and_send_event(On, :turned_on, when: TIMESTAMP)

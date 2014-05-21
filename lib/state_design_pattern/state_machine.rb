@@ -7,6 +7,8 @@ module StateDesignPattern
     extend Forwardable
     include Observable
 
+    attr_reader :context
+
     def initialize
       initialize_context
       transition_to_start_state
@@ -45,7 +47,7 @@ module StateDesignPattern
     private
 
       def initialize_context
-        @ctx = initial_context
+        @context = initial_context
       end
 
       def transition_to_start_state
@@ -58,9 +60,9 @@ module StateDesignPattern
       end
 
       def setup_context_delegation
-        if @ctx
-          methods = @ctx.members.map { |reader| [reader, "#{reader}=".to_sym] }.flatten
-          self.class.def_delegators :@ctx, *methods
+        if @context
+          methods = @context.members.map { |reader| [reader, "#{reader}=".to_sym] }.flatten
+          self.class.def_delegators :@context, *methods
         end
       end
 
