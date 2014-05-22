@@ -17,48 +17,51 @@ It can be turned on and off. Every time it is turned on it uses 25% of its
 energy. When it runs out of energy it cannot be turned on again.
 
 ```ruby
+class LightBulbContext < Struct.new(:energy, :times_on, :times_off)
+end
+
 class LightBulb < StateDesignPattern::StateMachine
   def start_state
     Off
   end
 
   def initial_context
-    Struct
-      .new(:energy, :times_on, :times_off)
-      .new(100,     0,         0)
+    LightBulbContext.new(100, 0, 0)
   end
 end
 
 class Switch < StateDesignPattern::BaseState
   def_actions :turn_on, :turn_off
+
+  alias_method :light_bulb, :state_machine
 end
 
 class On < Switch
 
   def turn_on
-    state_machine.send_event(:already_turned_on)
+    light_bulb.send_event(:already_turned_on)
   end
 
   def turn_off
-    state_machine.times_off += 1
-    state_machine.transition_to_state_and_send_event(Off, :turned_off)
+    light_bulb.times_off += 1
+    light_bulb.transition_to_state_and_send_event(Off, :turned_off)
   end
 end
 
 class Off < Switch
 
   def turn_on
-    if state_machine.energy >= 25
-      state_machine.energy -= 25
-      state_machine.times_on += 1
-      state_machine.transition_to_state_and_send_event(On, :turned_on)
+    if light_bulb.energy >= 25
+      light_bulb.energy -= 25
+      light_bulb.times_on += 1
+      light_bulb.transition_to_state_and_send_event(On, :turned_on)
     else
-      state_machine.send_event(:out_of_energy)
+      light_bulb.send_event(:out_of_energy)
     end
   end
 
   def turn_off
-    state_machine.send_event(:already_turned_off)
+    light_bulb.send_event(:already_turned_off)
   end
 end
 
