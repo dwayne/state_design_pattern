@@ -4,50 +4,54 @@ describe "the operation of the state design pattern with an example" do
 
   TIMESTAMP = Time.now
 
+  class LightBulbContext < Struct.new(:energy, :times_on, :times_off)
+    def blown?
+      energy < 25
+    end
+  end
+
   class LightBulb < StateDesignPattern::StateMachine
     def start_state
       Off
     end
 
     def initial_context
-      Struct.new(:energy, :times_on, :times_off) do
-        def blown?
-          energy < 25
-        end
-      end.new(100, 0, 0)
+      LightBulbContext.new(100, 0, 0)
     end
   end
 
   class Switch < StateDesignPattern::BaseState
     def_actions :turn_on, :turn_off, :toggle
+
+    alias_method :light_bulb, :state_machine
   end
 
   class On < Switch
 
     def turn_on
-      state_machine.send_event(:already_turned_on, when: TIMESTAMP)
+      light_bulb.send_event(:already_turned_on, when: TIMESTAMP)
     end
 
     def turn_off
-      state_machine.times_off += 1
-      state_machine.transition_to_state_and_send_event(Off, :turned_off, when: TIMESTAMP)
+      light_bulb.times_off += 1
+      light_bulb.transition_to_state_and_send_event(Off, :turned_off, when: TIMESTAMP)
     end
   end
 
   class Off < Switch
 
     def turn_on
-      if !state_machine.context.blown?
-        state_machine.energy -= 25
-        state_machine.times_on += 1
-        state_machine.transition_to_state_and_send_event(On, :turned_on, when: TIMESTAMP)
+      if !light_bulb.context.blown?
+        light_bulb.energy -= 25
+        light_bulb.times_on += 1
+        light_bulb.transition_to_state_and_send_event(On, :turned_on, when: TIMESTAMP)
       else
-        state_machine.send_event(:out_of_energy, when: TIMESTAMP)
+        light_bulb.send_event(:out_of_energy, when: TIMESTAMP)
       end
     end
 
     def turn_off
-      state_machine.send_event(:already_turned_off, when: TIMESTAMP)
+      light_bulb.send_event(:already_turned_off, when: TIMESTAMP)
     end
   end
 
